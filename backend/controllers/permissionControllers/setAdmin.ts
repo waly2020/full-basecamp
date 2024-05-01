@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { db } from "../../db.server";
-import { Role } from "@prisma/client";
+// import { Role } from "@prisma/client";
 
 export const setAdmin = async (req: Request, res: Response) => {
   try {
     const id = parseInt(req.params.id, 10);
     await db.user.update({
       where: { id },
-      data: { role: Role.ADMIN },
+      data: { role: "ADMIN" },
       select: {
         id: true,
         name: true,

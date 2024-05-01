@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { CustomSession } from "../../utils/types";
-import { Role } from "@prisma/client";
+// import { Role } from "@prisma/client";
 
-export const authRole = (role: Role) => {
+export const authRole = (role: "ADMIN" | "USER") => {
   return (
     req: Request & { session: CustomSession },
     res: Response,

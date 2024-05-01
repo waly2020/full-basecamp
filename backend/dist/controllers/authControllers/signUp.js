@@ -7,7 +7,7 @@ exports.signUp = void 0;
 const db_server_1 = require("../../db.server");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const express_validator_1 = require("express-validator");
-const client_1 = require("@prisma/client");
+// import { Role } from "@prisma/client";
 const signUp = async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
     try {
@@ -36,7 +36,7 @@ const signUp = async (req, res) => {
                 name: name,
                 email: email,
                 password: hashedPassword,
-                role: client_1.Role.USER,
+                role: "USER",
             },
         });
         return res.status(201).json({

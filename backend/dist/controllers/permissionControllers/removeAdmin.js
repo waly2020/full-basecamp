@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeAdmin = void 0;
 const db_server_1 = require("../../db.server");
-const client_1 = require("@prisma/client");
+// import { Role } from "@prisma/client";
 const removeAdmin = async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         await db_server_1.db.user.update({
             where: { id },
-            data: { role: client_1.Role.USER },
+            data: { role: "USER" },
             select: {
                 id: true,
                 name: true,

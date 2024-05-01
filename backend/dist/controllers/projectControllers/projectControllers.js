@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProject = exports.deleteProject = exports.getProject = exports.getAllProjects = exports.addProject = void 0;
 const db_server_1 = require("../../db.server");
 const express_validator_1 = require("express-validator");
-const client_1 = require("@prisma/client");
+// import { Role } from "@prisma/client";
 // Create a new project
 const addProject = async (req, res) => {
     const { name, description } = req.body;
@@ -41,7 +41,7 @@ const getAllProjects = async (req, res) => {
             return res.status(404).json({ message: "No projects found" });
         // On filtre les projets de façon à ce qu'ils ne soient vus que par l'ADMIN ou le propriétaire
         const filteredProjects = projects.filter((project) => project.userId === req.session.user?.id ||
-            req.session.user?.role === client_1.Role.ADMIN);
+            req.session.user?.role === "ADMIN");
         return res.status(200).json(filteredProjects);
     }
     catch (error) {

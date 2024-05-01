@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Aside from "../../components/Aside/Aside";
 import ButtonIcon from "../../components/buttons/ButtonIcon";
 import { APP_ASSETS } from "../../utils/assets";
@@ -6,17 +6,19 @@ import Searsh from "../../components/Searsh/Searsh";
 import Project from "../../components/Project/Project";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import { getAllProject } from "../../apis/projectApi";
 
 const Home = () => {
     const [activeAside,setActiveAside] = useState(false);
-    const projects = [1,2,3,4,5,6,7,8,9,0];
-    // const {user} = useSelector(state => state);
+    const [projects,setProject] = useState([]);
 
-    getAllProject().then(res => {
-        console.log(res);
-    })
+    useEffect(() =>{
+        getAllProject().then(res => {
+            if(res.status === 200){
+                setProject(res.data);
+            }
+        })
+    },[]);
 
     return (
         <>
@@ -38,9 +40,8 @@ const Home = () => {
         <Aside active={activeAside} onClose={() =>{setActiveAside(false)}}/>
         <main className="w-full max-w-[1200px] mx-auto px-4">
             <Searsh/>
-            {/* <ButtonIcon className="bg-[blue] rounded text-[#fff]" onClick={onRegister}>registerUser</ButtonIcon> */}
-            <div className="mt-8 flex flex-wrap gap-4 justify-center">
-                {projects.map((p,i,_) =>(<Project id={i + p}/>))}
+            <div className="mt-8 flex flex-wrap gap-4 justify-center items-start">
+                {projects.map((p,i,_) =>(<Project key={i} project={p}/>))}
             </div>
         </main>
         </>

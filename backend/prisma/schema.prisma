@@ -9,8 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -19,7 +19,7 @@ model User {
   email    String     @unique
   password String
   projects Projects[]
-  role     Role       @default(USER)
+  role     String       @default("ADMIN")
 }
 
 model Projects {
@@ -37,7 +37,4 @@ model Session {
   expiresAt DateTime
 }
 
-enum Role {
-  USER
-  ADMIN
-}
+

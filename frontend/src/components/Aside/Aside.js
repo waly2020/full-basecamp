@@ -6,7 +6,7 @@ import { CiLogout } from "react-icons/ci";
 import {useDispatch, useSelector} from 'react-redux';
 import { logout } from "../../setup/redux/slices/UserSlicer";
 import { logDatas } from "../../utils/functions";
-// import { logoutUser } from "../../apis/userApi";
+import { logoutUser } from "../../apis/userApi";
 
 const Aside = ({active = false,onClose}) => {
     const {user} = useSelector(state => state);
@@ -17,12 +17,10 @@ const Aside = ({active = false,onClose}) => {
         }
     }
     const onLogout = () =>{
-        logDatas(window.localStorage.getItem("user"),"Avants le dispatch")
         dispatch(logout());
-        logDatas(window.localStorage.getItem("user"),"Apres le dispatch")
-        // logoutUser().then(res =>{
-        //     logDatas(res,"----- session clear -----");
-        // })
+        logoutUser().then(res =>{
+            logDatas(res,"----- session clear -----");
+        })
     }
     return (
         <aside className={`fixed w-[300px] bg-white shadow-xl z-20 h-full top-0 right-0 transition ${active ? 'translate-x-[0%]' : 'translate-x-[100%]'}`}>

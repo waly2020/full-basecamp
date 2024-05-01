@@ -5,7 +5,7 @@ import { APP_ASSETS } from "../../utils/assets";
 import { PiPasswordBold } from "react-icons/pi";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { useRef } from "react";
-import { registerUser } from "../../apis/userApi";
+import { registerUser, signUser } from "../../apis/userApi";
 import { logDatas } from "../../utils/functions";
 import { useDispatch } from "react-redux";
 import { login } from "../../setup/redux/slices/UserSlicer";
@@ -16,6 +16,24 @@ const SignUp = () => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const dispatch = useDispatch();
+
+  const onLogin = (user) =>{
+    signUser({
+      email : user.email,
+      password : passwordRef.current.value
+    }).then(res =>{
+      if(res.status === 200){
+      logDatas(res.data.data, "Sign function");
+      dispatch(login(res.data.data));
+      }else{
+        throw new Error("User not connected create a counte");
+      }
+    }).then( () =>{
+    window.location.href = "/";
+  }).catch(err =>{
+    console.log(err);
+  })
+  }
   
   const onRegisterUser = (e) =>{
     e.preventDefault();
@@ -29,11 +47,10 @@ const SignUp = () => {
       logDatas(res,"Axios create user");
       if(res.status === 201){
         const user = res.data.user;
-        dispatch(login(user));
-        // onSignUser(user);
+        onLogin(user);
+      }else{
+        throw new Error("User can not created");
       }
-    }).then( () =>{
-      window.location.href = "/";
     }).catch(err =>{
       console.log(err);
     })

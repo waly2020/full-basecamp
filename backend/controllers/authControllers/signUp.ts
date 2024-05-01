@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { db } from "../../db.server";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
-import { Role } from "@prisma/client";
+// import { Role } from "@prisma/client";
 
 export const signUp = async (req: Request, res: Response) => {
   const { name, email, password, confirmPassword } = req.body;
@@ -35,7 +35,7 @@ export const signUp = async (req: Request, res: Response) => {
         name: name,
         email: email,
         password: hashedPassword,
-        role: Role.USER,
+        role: "USER",
       },
     });
 

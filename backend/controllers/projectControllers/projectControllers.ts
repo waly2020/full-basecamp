@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { db } from "../../db.server";
 import { validationResult } from "express-validator";
 import { CustomSession } from "../../utils/types";
-import { Role } from "@prisma/client";
+// import { Role } from "@prisma/client";
 
 // Create a new project
 export const addProject = async (
@@ -54,7 +54,7 @@ export const getAllProjects = async (
     const filteredProjects = projects.filter(
       (project) =>
         project.userId === req.session.user?.id ||
-        req.session.user?.role === Role.ADMIN
+        req.session.user?.role === "ADMIN"
     );
 
     return res.status(200).json(filteredProjects);
