@@ -1,0 +1,33 @@
+body{
+    background-color: #fff;
+}
+.burger{
+    width: 30px;
+    height: 21px;
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    gap: 3px;
+    div{
+        background: #000;
+        height: 100%;
+        border-radius: 4px;
+    }
+}
+.btn-project{
+    background: #aaa;
+    width: 30px;
+    height: 30px;
+}
+iframe{
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+aside,.hidden-scroll{
+    &::-webkit-scrollbar{
+        width: 0;
+    }
+}
+.shadow-close{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
+}
