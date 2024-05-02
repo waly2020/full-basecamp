@@ -30,7 +30,7 @@ const Details = () => {
       setProject(res.data);
      }
     })
-  },[]);
+  },[id]);
 
   return (
     <>
