@@ -11,7 +11,7 @@ import path from "path";
 import cors from "cors";
 
 const app = express();
-const port = 8080;
+const port = 10000;
 // const port = process.env.PORT;
 const HTML_FOLDER = path.join(__dirname, "../../frontend/build"); // Static files folder
 
