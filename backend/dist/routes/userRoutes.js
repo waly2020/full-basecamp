@@ -19,7 +19,4 @@ router.get("/api/v1/users", requireAuth_1.requireAuth, userControllers_1.getAllU
 router.get("/api/v1/user/:id", requireAuth_1.requireAuth, userControllers_1.getUserById); // Get a user by id
 router.delete("/api/v1/user/:id", requireAuth_1.requireAuth, userControllers_1.deleteUserById); // Delete a user
 router.put("/api/v1/user/:id", requireAuth_1.requireAuth, userControllers_1.updateUserById); // Update a user
-router.get("/", (req, res) => {
-    res.send("Welcome");
-});
 exports.default = router;
