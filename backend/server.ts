@@ -11,8 +11,8 @@ import path from "path";
 import cors from "cors";
 
 const app = express();
-const port = 10000;
-// const port = process.env.PORT;
+// const port = 10000;
+const port = process.env.PORT || 10000;
 const HTML_FOLDER = path.join(__dirname, "../frontend"); // Static files folder
 
 // Middlewares
