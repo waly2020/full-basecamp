@@ -14,7 +14,6 @@ import { getProject } from "../../apis/projectApi";
 const Details = () => {
   const [project,setProject] = useState(null);
   const {id} = useParams();
-  console.log(id);
   const [aside,setAside] = useState(false);
   const [settingProject,setSettingProject] = useState(false);
   const onSetting = () =>{

@@ -13,13 +13,13 @@ import cors from "cors";
 const app = express();
 const port = 10000;
 // const port = process.env.PORT;
-const HTML_FOLDER = path.join(__dirname, "../../frontend/build"); // Static files folder
+const HTML_FOLDER = path.join(__dirname, "../frontend"); // Static files folder
 
 // Middlewares
 app.use(cors());
 app.use(
   session({
-    secret: process.env.SECRET_KEY as string,
+    secret: "10000",
     resave: false,
     saveUninitialized: false,
     cookie: {
