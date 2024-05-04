@@ -48,8 +48,8 @@ const Login = () => {
         </div>
         <div className="shadow-xl px-2 py-4">
           <h3 className="font-bold uppercase text-2xl py-3 text-center">Login</h3>
-          <InputIcons ref={emailRef} icon={<MdOutlineMarkEmailRead size={20}/>} placeholder="Your e-mail" className="my-4" />
-          <InputIcons ref={passwordRef} icon={<PiPasswordBold size={20}/>} placeholder="Your password" className="my-4"/>
+          <InputIcons required={true} ref={emailRef} icon={<MdOutlineMarkEmailRead size={20}/>} placeholder="Your e-mail" className="my-4" />
+          <InputIcons required={true} ref={passwordRef} icon={<PiPasswordBold size={20}/>} placeholder="Your password" type="password" className="my-4"/>
           {/* <Link to="/home" className="mt-3"> */}
           <ButtonLoader className="bg-green-500 mt-3 text-white rounded">
           Sign up now

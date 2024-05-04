@@ -38,7 +38,7 @@ const Details = () => {
     </Modal>
       <header className="h-[70px] relative">
         <nav className="absolute top-0 left-0 flex justify-between w-full px-4 py-2 text-white z-10">
-          <Link to="/home" className="text-2xl"><IoMdArrowRoundBack/></Link>
+          <Link to="/" className="text-2xl"><IoMdArrowRoundBack/></Link>
           <button className="md:hidden" onClick={activeAside}>Setting</button>
         </nav>
         <div className="h-full relative bg-[rgba(0,0,0,0.5)]">
